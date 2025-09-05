@@ -780,9 +780,9 @@ main .btn{
 
 .event_wrap{
   /* border: 10px solid red; */
-  margin: -65px 0 30px;
+  margin: -65px auto 30px;
   padding-bottom: 90px;
-  width: 1200px;
+  width: 1300px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 30px;
 }
@@ -790,7 +790,7 @@ main .btn{
 .photocard {
   display: flex;
   justify-content: center;
-  column-gap: 55px;
+  column-gap: 80px;
 }
 
 .photocard1, .photocard2 {
@@ -886,12 +886,12 @@ main .btn{
   margin-top: -3px;
 }
 
-/* #2, 2번째 아티클 */
+/* #2의 2번째 아티클 */
 
 .event_detail{
   /* border: 1px solid #000; */
   margin: 0 auto;
-  width: 1030px;
+  width: 1060px;
   margin: 450px auto 0;
   position: relative;
   transition: .3s;
