@@ -1,18 +1,12 @@
 @import url(reset.css);
 @import url(font.css);
 
+html{scroll-behavior: smooth;}
+
 body{
   background-image: url(../image/bg.jpg);
   background-color: rgba(50, 50, 50, 0.9);
   background-blend-mode: multiply;
-  /* width: 1300px; */
-}
-
-#wrap{
-  width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 
@@ -21,8 +15,8 @@ body{
 header{
   /* border: 1px solid #fff; */
   display: flex;
-  margin: 10px 0;
-  padding: 0;
+  margin: 0;
+  padding: 15px 50px;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -127,23 +121,48 @@ header{
   height: 60px;
 }
 
+.util a {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  transition: transform 0.2s;
+}
+
+.util a.login {background-image: url(../image/icon_login.png); }
+.util a.cart {background-image: url(../image/icon_cart.png); }
+.util a.search {background-image: url(../image/icon_search.png); }
+
+.util a:hover {
+  transform: scale(1.1);
+}
+
+.util a.login:hover {
+  background-image: url(../image/icon_login_hover.png);
+}
+.util a.cart:hover {
+  background-image: url(../image/icon_cart_hover.png);
+}
+.util a.search:hover {
+  background-image: url(../image/icon_search_hover.png);
+}
+
+
+/* 전체 바디 크기설정 */
+#wrap{
+  width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* main _________________________ */
 
-
-@-webkit-keyframes kenburns-top-right {
-  0% {
-    -webkit-transform: scale(1) translate(0, 0);
-            transform: scale(1) translate(0, 0);
-    -webkit-transform-origin: 84% 16%;
-            transform-origin: 84% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.25) translate(20px, -15px);
-            transform: scale(1.25) translate(20px, -15px);
-    -webkit-transform-origin: right top;
-            transform-origin: right top;
-  }
+@keyframes kenburns-top-right {
+  0% {transform: scale(1) translate(0, 0);
+      transform-origin: 84% 16%; }
+  100% {transform: scale(1.25) translate(20px, -15px);
+        transform-origin: right top; }
 }
 
 main{
@@ -151,7 +170,7 @@ main{
   height: 90vh;
   overflow: hidden;
   padding: 70px 0 100px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: #fff;
 }
 
@@ -175,7 +194,6 @@ main{
 }
 
 .main_text{
-  /* border: 2px solid rgb(4, 255, 138); */
   position: absolute;
   top: 100px;
   left: 50px;
@@ -189,10 +207,11 @@ main{
 
 .main_text h2 span{font-family: 'Gmarket-SansBold', sans-serif;}
 .main_text h2:first-child{margin-bottom: 15px;}
+.main_text h2:nth-child(2) span{color: #85BF72;}
 
 
 /* //// 구매 버튼 //// */
-.button {
+main .btn{
   position: absolute;
   top: 400px;
   left: 150px;
@@ -205,7 +224,7 @@ main{
   align-items: center;
   justify-content: center;
   
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   background-color: #0a0a0a;
   cursor: pointer;
   overflow: hidden;
@@ -214,14 +233,14 @@ main{
   transition: .3s;
 }
 
-.fa-solid {
+.btn .fa-solid {
   font-size: 30px;
   color: #fff;
   transform: translateY(0);
   transition: .3s;
 }
 
-.button::before {
+.btn::before {
   content: '구매하기';
   position: absolute;
   top: -20px;
@@ -233,7 +252,7 @@ main{
   transition: .3s;
 }
 
-.button:hover {
+.btn:hover {
   width: 200px;
   border-radius: 50px;
   background-color: #85BF72;
@@ -241,12 +260,12 @@ main{
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
 }
 
-.button:hover .fa-solid {
+.btn:hover .fa-solid {
   font-size: 40px;
   transform: translateY(35px);
 }
 
-.button:hover::before {
+.btn:hover::before {
   font-size: 24px;
   opacity: 1;
   transform: translate(-50%, 35px);
@@ -290,15 +309,16 @@ main{
 
 /* 마우스 스크롤 효과 */
 @keyframes fadein {to {opacity: 1;}}
-
+@keyframes hide {
+  from {opacity: 1; transform: translateY(0);}
+  to   {opacity: 0; transform: translateY(10px);}
+}
 @keyframes mouse-pulse {
     0% {opacity: 1;
         transform: translateY(0);}
     100% {opacity: 0;
         transform: translateY(6px);}
 }
-
-/* 깜빡이는 애니메이션 */
 @keyframes fade-arrow {
     0% {opacity: 0;}
     100% {opacity: 1;}
@@ -310,7 +330,15 @@ main{
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  animation: fadein 5s ease forwards;
+  animation: fadein .6s ease forwards 2s;
+  will-change: opacity, transform;
+  z-index: 999;
+}
+
+.mouse_scroll > * {
+  animation: hide linear both;
+  animation-timeline: scroll();
+  animation-range: 120px 320px;
 }
 
 .mouse_scroll .mouse{
@@ -332,8 +360,8 @@ main{
   animation: mouse-pulse 1s ease infinite;
 }
 
-.mouse .down{margin-top: 6px;}
-.mouse .down span{
+.mouse_scroll .down{margin-top: 6px;}
+.mouse_scroll .down span{
   display: block;
   position: relative;
   left: 50%;
@@ -357,15 +385,38 @@ main{
 
 
 
+/* 섹션 _____________ */
+
+/* //// 타이틀 //// */
+
+#s1 .album h3,
+#s2 .event_title h3,
+#s3 .reviews_title h3{
+  margin: 30px auto;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-family: 'Cafe24-Danjunghae', sans-serif;
+  font-size: 55px;
+  text-align: center;
+  background-image: linear-gradient(90deg, #fff 0% , #fff 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-clip: text;
+  transition: background-size .5s ease-in-out;
+}
+
+#s1 .album h3:hover,
+#s2 .event_title h3:hover,
+#s3 .reviews_title h3:hover{
+  background-size: 100% 100%;
+}
+
+#s1, #s2, #s3{margin-top: 100px;}
 
 
-/* 섹션1 앨범소개 _____________ */
-
-.container{}
-
+/* #s1 앨범소개 */
 
 #s1{
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -377,24 +428,6 @@ main{
   max-width: 1300px;
   margin: 0 auto;
 }
-
-#s1 .album h3{
-  color: transparent;
-  -webkit-text-stroke: 1px #fff;
-  font-family: 'Cafe24-Danjunghae', sans-serif;
-  font-size: 55px;
-  text-align: center;
-  background-image: linear-gradient(90deg, #fff 0% , #fff 100%);
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  transition: background-size 1.3s ease;
-}
-
-#s1 .album h3:hover{background-size: 100% 100%;}
-
-
 
 #s1 .video-wrap{
   position: relative;
@@ -413,8 +446,8 @@ main{
 /* //// 카드 //// */
 
 @keyframes rotation_481 {
-  0% {transform: rotateZ(0deg);}
-  0% {transform: rotateZ(360deg);}
+  0% {transform: translate(-50%, -50%) rotateZ(0deg);}
+  100% {transform: translate(-50%, -50%) rotateZ(360deg);}
 }
 
 @keyframes floating {
@@ -425,15 +458,16 @@ main{
 
 .card{
   display: flex;
-  column-gap: 80px;
-  justify-content: center;
-  margin: 0 auto;
+  column-gap: 60px;
+  justify-content: space-between;
+  margin: 80px auto 0;
 }
 
-.card1, .card2, .card3 {
+.card1, .card2, .card3{
   overflow: visible;
-  width: 350px;
-  height: 400px;
+  width: 390px;
+  height: 600px;
+  perspective: 800px;
 }
 
 .content {
@@ -441,65 +475,92 @@ main{
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  transition: .35s;
-}
-
-.front, .back {
-  background: radial-gradient(ellipse at 50% 50%,#000000, #202020, rgb(48, 48, 48));
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 15px;
+  transform: rotateY(0);  
+  box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
   overflow: hidden;
+  isolation: isolate;
+  transition: transform .45s;
 }
 
-.card .content .back img{
-  width: 100%;
-  height: 100%;
-  object-position: center;
-  object-fit: cover;
-}
-
-.card1 .content .back::before{
-  content: 'About Album';
+.front, .back{
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font: 33px Cafe24-Shiningstar;
-  white-space: nowrap;
-  text-align: center;
-  background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
-  animation: rotation_481 5000ms infinite linear;
-}
-
-.card1 .content .back::after {
-  position: absolute;
-  content: ' ';
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
-  animation: rotation_481 5000ms infinite linear;
-}
-
-
-.card1:hover .content {
-  transform: rotateY(180deg);
+  inset: 0;  
+  transform-style: preserve-3d;
 }
 
 .front {
-  transform: rotateY(180deg);
-  color: white;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  transform: rotateY(0);
+  backface-visibility: hidden;
+  opacity: 1;
 }
 
-.front .front-content {
+.back {
+  transform: rotateY(180deg); 
+  opacity: 0;
+  color: #fff;
+  background: linear-gradient(rgb(60, 88, 53) 0%, rgb(44, 65, 39) 7%, rgb(0, 0, 0) 80%);
+}
+
+.front-content { /* 여분설정 */
+  position: absolute;
+  inset: 4px;
+  border-radius: 16px;
+  background: red;
+  z-index: 1;
+}
+
+.card .content .front img{
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  object-position: center;
+  object-fit: cover;
+  border-radius: 16px;
+  z-index: 2;  
+}
+
+.front::after{
+  position: absolute;
+  content: ' ';
+  display: block;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 370px;
+  height: 170%;
+  background: linear-gradient(90deg, transparent, #85BF72, #85BF72, transparent);
+  animation: rotation_481 5s infinite linear;
+}
+
+.card2 .content .front::after{animation-delay: 1s;}
+
+.card1 .content .front::before{content:'About Album';}
+.card2 .content .front::before{content:'Track List';}
+.card3 .content .front::before{content:'Album Contents';}
+
+.card1 .content .front::before,
+.card2 .content .front::before,
+.card3 .content .front::before{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font: 33px 'Cafe24-Shiningstar', sans-serif;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 3;
+}
+
+.back .back-content{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -513,113 +574,99 @@ main{
   align-items: center;
 }
 
-.front-content .badge {
-  background-color: #000;
+.back-content .badge{
+  background-color: #eee;
+  color: #233;
   padding: 3px 15px 5px;
   border-radius: 30px;
-  backdrop-filter: blur(15px);
+  margin-bottom: 20px;
   width: fit-content;
-  font: 33px Cafe24-Shiningstar;
+  font: bold 33px 'Cafe24-Shiningstar', sans-serif;
+  line-height: 1.8;
   letter-spacing: 2px;
 }
 
-.front-content .card1_text{
+.back-content .card1_text,
+.back-content .card2_text,
+.back-content .card3_text{
   width: 310px;
   text-align: justify;
-  font: 18px Pretendard-Light;
+  font: 18px 'Pretendard-Light', sans-serif;
   line-height: 26px;
 }
 
-
-.card2 .content .back::before{
-  content: 'Track List';
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font: 33px Cafe24-Shiningstar;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.card2:hover .content {
+.card1:hover .content,
+.card2:hover .content,
+.card3:hover .content{
   transform: rotateY(180deg);
 }
 
-.front-content .card2_text{
-  width: 310px;
-  text-align: justify;
-  font: 18px Pretendard-Light;
-  line-height: 26px;
+.card1:hover .front,
+.card2:hover .front,
+.card3:hover .front {
+  opacity: 0;
+  pointer-events: none; 
 }
 
-.card3 .content .back::before{
-  content: 'Album Contents';
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font: 33px Cafe24-Shiningstar;
-  white-space: nowrap;
-  text-align: center;
+.card1:hover .back,
+.card2:hover .back,
+.card3:hover .back {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.card3:hover .content {
-  transform: rotateY(180deg);
-}
 
-.front-content .card3_text{
-  width: 310px;
-  text-align: justify;
-  font: 18px Pretendard-Light;
-  line-height: 26px;
-}
+
+/* //// 뮤직 셀렉트 버튼 //// */
 
 .musicbtn {
+  /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
-  width: 14em;
+  width: 240px;
+  height: 240px;
   align-items: center;
   justify-content: center;
   position: relative;
+  margin: 70px auto;
+  gap: 0;
+  transition: 0.3s ease-in-out;
 }
 
-.musicbtn .music {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  border-top-left-radius: 10px;
-  backdrop-filter: blur(5px);
-  border: 1px solid transparent;
-  opacity: 0;
-  transition: 0.2s ease-in-out;
+.musicbtn .music_front {
+  position: absolute;
+  border-radius: 10px;
+  width: 230px;
+  height: 230px;
+  background: linear-gradient(360deg, #333, #00740a);
+  box-shadow: inset 0px 0px 180px 5px #fff;
+  z-index: 0;
 }
 
 .musicbtn .text {
   position: absolute;
-  font-size: 0.7em;
-  color: black;
+  font-family: 'Gmarket-SansMedium', sans-serif;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 0 5px #222;
   text-align: center;
   font-weight: bold;
   pointer-events: none;
-  opacity: 1;
-  z-index: 3;
-  transition: 0.4s ease-in-out;
+  z-index: 1;
 }
 
-.musicbtn .music_back {
-  position: absolute;
-  border-radius: 10px;
-  width: 11em;
-  height: 11em;
-  background: linear-gradient(360deg, #333, #00740a);
-  z-index: -2;
-  box-shadow: inset 0px 0px 180px 5px #fff;
-  opacity: 1;
+.musicbtn .music {
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-top-left-radius: 10px;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  z-index: 2;
 }
 
 .music:nth-child(2), 
@@ -642,76 +689,481 @@ main{
   border-top-left-radius: 0px;
 }
 
-.music .center {
+.musicbtn.center {
   position: absolute;
-  margin-left: 0.2em;
-  margin-top: 0.2em;
+  margin-left: 6px;
+  margin-top: 6px;
 }
 
-.musicbtn .spotify {
-  background: url(../image/musiclogo_spotify.png) no-repeat center #03a9f4;
-  background-size: contain;
+.music.spotify {
+  background: url(../image/musiclogo_spotify.png) no-repeat center #85BF72;
+  background-size: 70%;
   }
 
-.musicbtn .apple {
-  background: url(../image/musiclogo_apple.png) no-repeat center #aa8aa2;
-  background-size: contain;
+.music.apple {
+  background: url(../image/musiclogo_apple.png) no-repeat center #85BF72;
+  background-size: 80%;
 }
-.musicbtn .melon {
-  background: url(../image/musiclogo_melon.png) no-repeat center #39afcc;
-  background-size: contain;
+.music.melon {
+  background: url(../image/musiclogo_melon.png) no-repeat center #85BF72;
+  background-size: 100%;
 }
-.musicbtn .genie {
-  background: url(../image/musiclogo_genie.svg) no-repeat center #395bcc;
-  background-size: contain;
+.music.genie {
+  background: url(../image/musiclogo_genie.png) no-repeat center #85BF72;
+  background-size: 70%;
 }
-.musicbtn .center {
-  background: url(../image/) no-repeat center #63cc39;
-  background-size: contain;
+.music.center {
+  background: url(../image/musiclogo_center.png) no-repeat center #85BF72;
+  background-size: 80%;
 }
-.musicbtn .vibe {
-  background: url(../image/musiclogo_vibe.png) no-repeat center #cc9939;
-  background-size: contain; 
+.music.vibe {
+  background: url(../image/musiclogo_vibe.png) no-repeat center #85BF72;
+  background-size: 90%; 
 }
-.musicbtn .flo {
-  background: url(../image/musiclogo_flo.png) no-repeat center #cc3939;
-  background-size: contain; 
+.music.flo {
+  background: url(../image/musiclogo_flo.png) no-repeat center #85BF72;
+  background-size: 100%;
 }
-.musicbtn .bugs {
-  background: url(../image/musiclogo_bugs.svg) no-repeat center #39cc71;
-  background-size: contain; 
+.music.bugs {
+  background: url(../image/musiclogo_bugs.png) no-repeat center #85BF72;
+  background-size: 70%;
 }
-.musicbtn .youtube {
-  background: url(../image/musiclogo_youtube.png) no-repeat center #ccc239;
-  background-size: contain; 
+.music.youtube {
+  background: url(../image/musiclogo_youtube.png) no-repeat center #85BF72;
+  background-size: 70%;
 }
 
 /* 버튼 호버 */
 
 .musicbtn:hover {
-  width: 14em;
+  width: 280px;
+  height: 280px;
+  gap: 8px;
   cursor: pointer;
 }
 
 .musicbtn:hover .music {
-  margin: 0.2em;
+  opacity: .7;
+  margin: 4px;
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  opacity: 0.6;
 }
 
-.musicbtn .spotify:hover {opacity: 1; }
-.musicbtn .apple:hover {opacity: 1;}
-.musicbtn .melon:hover {opacity: 1;}
-.musicbtn .genie:hover {opacity: 1;}
-.musicbtn .center:hover {opacity: 1;}
-.musicbtn .vibe:hover {opacity: 1;}
-.musicbtn .flo:hover {opacity: 1;}
-.musicbtn .bugs:hover {opacity: 1;}
-.musicbtn .youtube:hover {opacity: 1;}
+.musicbtn .music:hover {opacity: 1;}
 
-.musicbtn:hover .text {
-  opacity: 0;
-  z-index: -3;
+.musicbtn:hover.spotify,
+.musicbtn:hover.apple,
+.musicbtn:hover.melon,
+.musicbtn:hover.genie,
+.musicbtn:hover.center,
+.musicbtn:hover.vibe,
+.musicbtn:hover.flo,
+.musicbtn:hover.bugs,
+.musicbtn:hover.youtube{opacity: 1;}
+
+.musicbtn:hover .text {opacity: 0;}
+.musicbtn:hover .music_front {opacity: 0;}
+
+
+
+/*  //// #s2 구매이벤트 //// */
+
+.event_title h4{
+  /* border: 3px solid yellow; */
+  color: #fff;
+  text-align: center;
+  font-family: 'Gmarket-SansLight', sans-serif;
+  font-size: 18px;
+  margin-top: -20px;
 }
-.musicbtn:hover .music_back {opacity: 0;}
+
+.event_wrap{
+  /* border: 10px solid red; */
+  margin: -65px 0 30px;
+  padding-bottom: 90px;
+  width: 1200px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+}
+
+.photocard {
+  display: flex;
+  justify-content: center;
+  column-gap: 55px;
+}
+
+.photocard1, .photocard2 {
+  /* border: 1px solid #000; */
+  position: relative;
+  width: 500px;
+  height: 230px;
+  border-radius: 20px;
+  background: transparent;
+  transition: .3s ease-in-out;
+}
+
+.photocard_main{
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 230px;
+  text-align: center;
+  font-family: 'Cafe24-Danjunghae', sans-serif;
+  font-size: 35px;
+  text-shadow: 0 0 2px #333;
+  background-color: #fff;
+  border: 3px solid #85BF72;
+  border-radius: 20px;
+  z-index: 2;
+  transition: .4s ease-in-out;
+}
+
+.photocard_upper, .photocard_lower{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 450px;
+  background-color: #fff;
+  font-family: 'Gmarket-SansMedium', sans-serif;
+  font-size: 18px;
+  transition: .4s ease-in-out;
+}
+
+.photocard_upper{
+  top: 170px;
+  height: 100px;
+  border-radius: 15px 15px 0 0;
+}
+
+.photocard_lower{
+  top: 175px;
+  height: 220px;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  column-gap: 35px;
+}
+
+.photocard_img{
+  height: 180px;
+  aspect-ratio: 2/2.5;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.photocard_img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photocard_main:hover {
+  background-color: #85BF72;
+  color: #fff;
+  cursor: pointer;
+}
+
+.photocard_main:hover + .photocard_upper {
+  top: 80px;
+}
+
+.photocard_main:hover ~ .photocard_lower {
+  top: 390px;
+}
+
+.photocard2 .photocard_upper span{
+  font-family: 'Gmarket-SansLight', sans-serif;
+  font-size: 14px;
+  line-height: 10px;
+  margin-top: -3px;
+}
+
+/* #2, 2번째 아티클 */
+
+.event_detail{
+  /* border: 1px solid #000; */
+  margin: 0 auto;
+  width: 1030px;
+  margin: 450px auto 0;
+  position: relative;
+  transition: .3s;
+}
+
+.event_detail button{
+  border: 2px solid #85BF72;
+  background-color: #fff;
+  color: #85BF72;
+  border-radius: 30px;
+  padding: 5px 25px;
+  margin-bottom: 13px;
+  font-family: 'Cafe24-Danjunghae', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  width: max-content;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  transform: translateX(0);
+  transition: .3s;
+}
+
+.event_notice2{
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 0 40px;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.event_guide{
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1.2fr 4fr;
+  grid-template-rows: .8fr .8fr .8fr;
+  align-items: center;
+}
+
+.event_guide img{
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+}
+
+.event_guide div:nth-child(-n+3){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background-color: #85BF72;
+  color: #fff;
+  width: 160px;
+  height: 40px;
+  padding: 3px 15px 0;
+  font-family: 'Gmarket-SansMedium', sans-serif;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+.event_guide div:nth-child(n+4){
+  font-family: 'Pretendard-Light', sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.event_detail:hover .event_notice2{
+  box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.7);
+  border: 1.5px solid #85BF72;
+}
+.event_detail:hover{
+  align-items: center;
+  transition: .3s;
+}
+.event_detail:hover button{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* //// #s3 구매후기 섹션 */
+
+
+.reviews{
+  display: flex;
+  gap: 10px;
+}
+.reviews .user{
+  background-color: #777;
+  height: 300px;
+  width: 100px;
+  flex: 1;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 15px;
+  padding: 20px;
+  
+  font-family: 'Pretendard-Light', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.4;
+  color: #fff;
+
+  transition: all 0.3s ease;
+}
+
+.reviews .user:hover{
+  flex: 2;
+  background-color: #85BF72;
+  font-size: 22px;
+  font-family: 'Pretendard-SemiBold', sans-serif;
+}
+
+
+/* //// 유의사항 //// */
+.notice{
+  margin: 100px auto;
+  padding: 15px 30px 25px;
+  color: #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  line-height: 1.8;
+  font-family: 'Pretendard-Light', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.notice_title{
+  background-color: #fff;
+  color: #85BF72;
+  width: max-content;
+  padding: 5px 15px 2px;
+  border-radius: 30px;
+  font-family: 'Gmarket-SansBold', sans-serif;
+  margin: 20px 0;
+  opacity: 1;
+}
+
+.notice_title:hover{opacity: 0.75;}
+
+
+/* //// 구매 버튼 //// */
+
+.btn_p{
+  /* border: 3px solid red; */
+  position: relative;
+  width: 100%;
+  height: 150px;
+  }
+
+.btn_p .btn{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: none;
+  background-color: #0a0a0a;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 30;
+  transform-origin: center; 
+  transition: .3s;
+}
+
+.btn_p .btn:hover {
+  width: 200px;
+  border-radius: 50px;
+  background-color: #85BF72;
+  align-items: center;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+}
+
+
+/* footer ________________________ */
+
+footer{
+  background-color: #111;
+  color: #fff;
+  width: 100%;
+  padding: 30px 50px;
+}
+
+.fnb{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.fnb>li a{
+  display: block;
+  text-align: center;
+  padding: 0 30px;
+}
+
+/* 첫 번째 이후 아이템 왼쪽에만 세로 구분선 */
+.fnb>li+li{
+  position: relative;
+}
+.fnb>li+li::before{
+  content:"";
+  position:absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 80%;
+  background: #ddd;
+}
+
+.fnb .f_btn{
+  text-transform: uppercase;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.f_up .f_btn ul li{
+  display: none;
+}
+
+
+.f_down{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.f_down img{
+  width: 100px;
+  margin-right: 20px;
+}
+
+
+
+/* //// 탑화면 바로가기 //// */
+
+@keyframes goto-show {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@supports (animation-timeline: scroll()) {
+  .goto-top{
+    animation: goto-show linear both;
+    animation-timeline: scroll();
+    animation-range: 500px 1000px;
+  }
+}
+
+.goto-top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 30px;
+  background-color: #555;
+  border: 2px solid #85BF72;
+  border-radius: 50%;
+  margin: auto;
+  text-align: center;
+  z-index: 999;
+}
+
+.goto-top i{
+  color: #85BF72;
+}

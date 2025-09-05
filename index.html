@@ -6,10 +6,7 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="icon" href="image/fav_icon.png">
 </head>
-<body>
-
-
-<div id="wrap">
+<body id="top">
 
   <header>
     <div class="logo">
@@ -24,12 +21,14 @@
     </nav>
 
     <div class="util">
-      <a href="#none"><img src="image/icon_login.png" alt="로그인"></a>
-      <a href="#none"><img src="image/icon_cart.png" alt="구매하기"></a>
-      <a href="#none"><img src="image/icon_search.png" alt="검색창"></a>
-    </div>
+      <a href="#none" class="login"></a>
+      <a href="#none" class="cart"></a>
+      <a href="#none" class="search"></a>
+</div>
   </header>
 
+
+<div id="wrap">
 
   <main>
     <div class="main_visual"><!-- css배경 --></div>
@@ -43,7 +42,7 @@
         <span>사인반 + 단독 특전</span>이 따라온다!
       </h2>
     </div>
-    <button class="button">
+    <button class="btn">
     <i class="fa-solid fa-cart-shopping"></i>
     </button>
     <div class="main_caption">
@@ -58,6 +57,7 @@
     </div>
   </main>
 
+<!-- 마우스 스크롤 효과 -->
   <div class="mouse_scroll">
     <span class="mouse"></span>
     <div class="down">
@@ -90,16 +90,17 @@
       <div class="card">
         <div class="card1">
           <div class="content">
-            <div class="back">
+            <div class="front">
+              <div class="front-content"></div>
               <img src="image/card_1.jpg" alt="앨범소개">
             </div>
         
-            <div class="front">
-              <div class="front-content">
+            <div class="back">
+              <div class="back-content">
                 <small class="badge">About Album</small>
                 <div class="card1_text">
                     <p>
-                      이찬혁이 두 번째 정규 앨범 [EROS]로 독보적인 솔로 아티스트의 길을 이어간다. 정규 1집 [ERROR]에서 자신이 죽음에 이르는 과정을 유기적인 서사로 풀어냈다면, 이번 앨범 [EROS]는 ‘타인의 죽음’에서 출발한 이야기다. 소중한 존재의 상실로 증폭된 내면의 결핍과, 이를 마주한 이찬혁의 감정과 태도가 다양한 형태로 펼쳐진다. ’비비드라라러브’처럼 이상적 사랑이 지배하는 ‘빛나는 세상’은 오지 않더라도, 그것을 바라는 마음에는 빛이 난다고 그는 전한다.
+                      이찬혁이 두 번째 정규 앨범 [EROS]로 독보적인 솔로 아티스트의 길을 이어간다. 정규 1집 [ERROR]에서 자신이 죽음에 이르는 과정을 유기적인 서사로 풀어냈다면, 이번 앨범 [EROS]는 ‘타인의 죽음’에서 출발한 이야기다. 소중한 존재의 상실로 증폭된 내면의 결핍과, 이를 마주한 이찬혁의 감정과 태도가 다양한 형태로 펼쳐진다. ‘비비드라라러브’처럼 이상적 사랑이 지배하는 ‘빛나는 세상’은 오지 않더라도, 그것을 바라는 마음에는 빛이 난다고 그는 전한다.
                     </p>
                   </div>
               </div>
@@ -108,12 +109,12 @@
         </div>
         <div class="card2">
           <div class="content">
-            <div class="back">
+            <div class="front">
               <img src="image/card_2.jpg" alt="곡 목록">
             </div>
         
-            <div class="front">
-              <div class="front-content">
+            <div class="back">
+              <div class="back-content">
                 <small class="badge">Track List</small>
                 <div class="card2_text">
                     <p>
@@ -134,12 +135,12 @@
         </div>
         <div class="card3">
       <div class="content">
-        <div class="back">
+        <div class="front">
           <img src="image/card_3.jpg" alt="앨범구성품">
         </div>
     
-        <div class="front">
-          <div class="front-content">
+        <div class="back">
+          <div class="back-content">
             <small class="badge">Album Contents</small>
             <div class="card3_text">
                 <p>
@@ -166,21 +167,21 @@
       </div>
 
       <div class="musicbtn">
-      <div class="music spotify"></div>
-      <div class="music apple"></div>
-      <div class="music melon"></div>
-      <div class="music genie"></div>
-      <div class="music center"></div>
-      <div class="music vibe"></div>
-      <div class="music flo"></div>
-      <div class="music bugs"></div>
-      <div class="music youtube"></div>
-      <p class="text">
-        이찬혁<br>
-        2nd<br>
-        Album
-      </p>
-      <div class="music_back"></div>
+        <div class="music_front"></div>
+        <p class="text">
+          이찬혁<br>
+          2nd<br>
+          Album
+        </p>
+        <div class="music spotify"></div>
+        <div class="music apple"></div>
+        <div class="music melon"></div>
+        <div class="music genie"></div>
+        <div class="music center"></div>
+        <div class="music vibe"></div>
+        <div class="music flo"></div>
+        <div class="music bugs"></div>
+        <div class="music youtube"></div>
       </div>
 
     </section>
@@ -188,125 +189,146 @@
 
     <!-- 구매 이벤트 -->
     <section id="s2">
+
       <div class="event_title">
         <h3>Special Album Event</h3>
-        <h4>이찬혁 - LEE CHANHYUK 2nd FULL ALBUM [EROS]<b>사인반 추첨 및 단독 특전 증정 이벤트</b></h4>
+        <h4>LEE CHANHYUK 2nd FULL ALBUM [EROS]<b>사인반 추첨 및 단독 특전 증정 이벤트</b></h4>
       </div>
-      <article class="event_detail">
-        <p>경품안내</p>
-        <div class="event_notice1">
-          <div class="gift1">
-            <h4>구매자 전원</h4>
-            <p>단독 특전 포토카드 2종 중 랜덤 1종 증정</p>
-            <div class="img_photocard">
-              <img src="image/photo_card1.png" alt="구성카드1">
-              <img src="image/photo_card2.png" alt="구성카드2">
+      <div class="event_wrap">
+        <article>
+          <div class="photocard">
+            <div class="photocard1">
+              <div class="photocard_main">
+                <p>구매자 전원</p>
+              </div> 
+              <div class="photocard_upper">
+                <p>단독 특전 포토카드 2종 중 랜덤 1종 증정</p>
+              </div>
+              <div class="photocard_lower">
+                <div class="photocard_img">
+                  <img src="image/photo_card1.png" alt="포토카드1">
+                </div>
+                <div class="photocard_img">
+                  <img src="image/photo_card2.png" alt="포토카드2">
+                </div>
+              </div>
+            </div>
+            <div class="photocard2">
+              <div class="photocard_main">
+                <p>구매자 중 10명 추첨</p>
+              </div> 
+              <div class="photocard_upper">
+                <p>LEE CHANHYUK [EROS] 친필사인반 <br> <span>* 해당 사인반은 비매품으로, <br> 구매하신 앨범과 별도로 사인반을 추가 발송해 드립니다.</span>
+                </p>
+              </div>
+              <div class="photocard_lower">
+                <div class="photo_sign">
+                  <img src="image/sign.png" alt="사인이미지">
+                </div>
+              </div>
             </div>
           </div>
-          <div class="gift2">
-            <h4>구매자 중 10명 추첨</h4>
-            <p>이찬혁 LEE CHANHYUK 2nd FULL ALBUM [EROS] 친필사인반</p>
-            <img src="image/sign.png" alt="사인">
-            <p>* 해당 사인반은 비매품으로, 구매하신 앨범과 별도로 사인반을 추가 발송해 드립니다.</p>
+        </article>
+        
+        <article class="event_detail">
+          <button>
+            이벤트 응모방법
+          </button>
+          <div class="event_notice2">
+            <div class="event_guide">
+              <div>
+                <img src="image/event_icon1.png" alt="">
+                <span>응모 기간</span>
+              </div>
+              <div>
+                <img src="image/event_icon2.png" alt="">
+                <span>참여 방법</span>
+              </div>
+              <div>
+                <img src="image/event_icon3.png" alt="">
+                <span>당첨자 발표</span>
+              </div>
+              <div>
+                <b>2025년 8월 6일 (수) 10:00 AM (KST) ~ 8월 24일 (일) 23:59 PM (KST)</b> <br> <small>*이벤트 응모 마감은 결제완료 시간 기준으로 응모 처리됩니다.</small>
+              </div>
+              <div>
+                <b>이벤트 기간 한정 이찬혁 - LEE CHANHYUK 2nd FULL ALBUM [EROS] 이벤트 응모 상품을 구매한 YES24 회원 중 총 10명 추첨(중복 당첨 불가)</b> <br>
+                <small>
+                  *이벤트 기간 내 한 개의 아이디로 여러건을 주문하신 경우 모두 합산하여 총 구매하신 수량과 동일한 횟수로 자동 응모됩니다. 한개의 아이디로 여러 주문자가 주문하실 경우엔 아이디 기준 한 명의 응모자로 간주됩니다. <br>
+                  예시: 응모 기간 중 아이디 A님이 1차로 2장 주문 2차로 3장 주문하실 경우 응모 기간내 총 5장 구매로 합산되어 아이디 A님은 5회 자동 응모 처리됩니다.
+                </small>
+              </div>
+              <div>
+                <b>2025년 8월 25일 (월) 17:00PM (KST) 이후 이벤트</b> <br>
+                  >> &nbsp; 당첨자 발표 및 당첨자 개별 MMS 발송
+              </div>
+            </div>
           </div>
-        </div>
-      </article>
-      <article>
-        <p>이벤트 응모방법</p>
-        <div class="event_notice2">
-          <div class="event_guide">
-            <div class="event_date">
-              <p>응모기간</p>
-              <p>
-                2025년 8월 6일 (수) 10:00 AM (KST) ~ 8월 24일 (일) 23:59 PM (KST)
-*이벤트 응모 마감은 결제완료 시간 기준으로 응모 처리됩니다.
-              </p>
-            </div>
-            <div class="event_method">
-              <p>참여 방법</p>
-              <p>
-                이벤트 기간 한정 이찬혁 - LEE CHANHYUK 2nd FULL ALBUM [EROS] 이벤트 응모 상품을 구매한 YES24 회원 중 총 10명 추첨(중복 당첨 불가) <br>
-                *이벤트 기간 내 한 개의 아이디로 여러건을 주문하신 경우 모두 합산하여 총 구매하신 수량과 동일한 횟수로 자동 응모됩니다. 한개의 아이디로 여러 주문자가 주문하실 경우엔 아이디 기준 한 명의 응모자로 간주됩니다.
-                예시: 응모 기간 중 아이디 A님이 1차로 2장 주문 2차로 3장 주문하실 경우 응모 기간내 총 5장 구매로 합산되어 아이디 A님은 5회 자동 응모 처리됩니다.
-              </p>
-            </div>
-            <div class="event_result">
-              <p>당첨자 발표</p>
-              <p>
-                2025년 8월 25일 (월) 17:00PM (KST) 이후 이벤트 > 당첨자 발표 및 당첨자 개별 MMS 발송
-              </p>
-            </div>
-          </div>
+        </article>
+      </div>
 
-        </div>
-      </article>
     </section>
 
     <!-- 구매후기 -->
     <section id="s3">
-      <div class="Reviews">
-        <div class="user1">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
+      <div class="reviews_title">
+          <h3>What Fans Say</h3>
+        </div>
+      <div class="reviews">
+        <div class="user">
+          <p>
+            최신 CD 앨범 사보는거 처음이에요. <br>
+            이찬혁 음악으로 사랑과 치유받는 느낌입니다.
+          </p>
+          <p>h*****h</p>  
+          <p>2025-07-27</p>
+        </div>
+        <div class="user">
+          <p>
+            더욱더 간결하고 깊어진 그와 음악이 돌아왔네. 아직 20대인데... 놀랍고ㅜㅠ 보석이다
+          </p>
+          <p>b*********r</p>
+          <p>2025-07-17</p>
+        </div>
+        <div class="user">
+          <p>
+            이찬혁은 천재다
+          </p>
+          <p>d***p</p>
           <p>2025-08-01</p>
         </div>
-        <div class="user2">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
+        <div class="user">
+          <p>
+            무당이 활개치는 시대에 사랑을 나누려 등장한 난세 영웅.
+          </p>
+          <p>h*****8</p>
+          <p>2025-08-05</p>
         </div>
-        <div class="user3">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
+        <div class="user">
+          <p>
+            종말의 시대에 사랑을 노래하는 천사야?
+          </p>
+          <p>j*******w</p>
+          <p>2025-08-09</p>
         </div>
-        <div class="user4">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
+        <div class="user">
+          <p>
+            멸종위기사랑🖤
+          </p>
+          <p>U***y</p>
+          <p>2025-08-09</p>
         </div>
-        <div class="user5">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
-        </div>
-        <div class="user6">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
-        </div>
-        <div class="user7">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>이찬혁은 천재다</p>
-          <p>id***p</p>
-          <p>2025-08-01</p>
+        <div class="user">
+          <p>
+            찬혁아 하고 싶은 거 다 하자!!처음엔 그 용기가 대단하다고 생각했는데 이젠 너무 멋져!! 그냥 넌 천재 아티스트야!!
+          </p>
+          <p>e***q</p>
+          <p>2025-08-05</p>
         </div>
       </div>
     </section>
 
   </div>
-
-  
 
 
 
@@ -330,7 +352,7 @@
       </ul>
         
       <div class="notice_title">개인정보 수집 및 이용에 관한 안내</div>
-      <div class="notice_text2">
+      <div class="notice_text">
         <ol>
           <li>본 이벤트 당첨자 추첨 및 경품 발송을 위해 당첨자의 개인 정보를 다음과 같이 제공합니다.</li>
           <li>
@@ -346,26 +368,61 @@
     </div>
   </div>
 
-
-  <!-- 버튼! -->
-
-  <a href="#none">구매하러가기</a>
   
-  <footer class="site_footer">
-    <div class="footer_container">
-      <nav aria-label="Footer">
-        <ul class="fnb">
-          <li><a href="#">이용약관</a></li>
-          <li><a href="#">개인정보처리방침</a></li>
-        </ul>
-      </nav>
-      <small>© YG ENTERTAINMENT</small>
-    </div>
-  </footer>
+  <!-- 버튼! -->
+  <article class="btn_p">
+    <button class="btn">
+    <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+  </article>
 </div>
 
+  <footer>
+    <div class="f_up">
+      <ul class="fnb">
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">비즈니스 문의</a></li>
+        <li><a href="#">고객 문의</a></li>
+        <li><a href="#">1:1 문의하기</a></li>
+        <li><a href="#">자주묻는 질문</a></li>
+        <li><a href="#">상담시간 안내</a></li>
+        <li><a href="#">구매 안내 링크</a></li>
+        <li class="f_btn">
+          <a href="#">
+            FAMILY SITE <i class="fa-solid fa-caret-down"></i>
+          </a>
+          <ul>
+            <li>YG RECRUIT</li>
+            <li>YG LIFE</li>
+            <li>YG SELECT YG AUDITION</li>
+          </ul>
+        </li>
+
+        <li class="f_btn">
+          <a href="#">
+            Language <i class="fa-solid fa-caret-down"></i>
+          </a>
+          <ul>
+            <li>ko</li>
+            <li>en</li>
+            <li>jp</li>
+            <li>cn</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="f_down">
+      <img src="image/f_logo.svg" alt="로고">
+      <p>YG Entertainment의 모든 컨텐츠는 저작권의 보호를 받고 있습니다. <br>
+      &copy; YG Entertainment ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
 
 
+  <div class="goto-top">
+    <a href="#top"><i class='bx  bx-arrow-up-stroke'></i></a>
+  </div>
   
 </body>
 </html>
