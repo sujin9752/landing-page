@@ -10,6 +10,14 @@ body{
 }
 
 
+#wrap{
+  width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* header _______________________ */
 
 header{
@@ -110,7 +118,6 @@ header{
   transform: rotate(-45deg);
 }
 
-
 .util{
   flex: 1;
   /* border: 1px solid #fff; */
@@ -144,15 +151,6 @@ header{
 }
 .util a.search:hover {
   background-image: url(../image/icon_search_hover.png);
-}
-
-
-/* 전체 바디 크기설정 */
-#wrap{
-  width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 
@@ -224,8 +222,8 @@ main .btn{
   align-items: center;
   justify-content: center;
   
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: #0a0a0a;
+  border: 1px solid #85BF72;
+  background-color: #000;
   cursor: pointer;
   overflow: hidden;
   z-index: 30;
@@ -466,7 +464,7 @@ main .btn{
 .card1, .card2, .card3{
   overflow: visible;
   width: 390px;
-  height: 600px;
+  height: 450px;
   perspective: 800px;
 }
 
@@ -577,12 +575,12 @@ main .btn{
 .back-content .badge{
   background-color: #eee;
   color: #233;
-  padding: 3px 15px 5px;
+  padding: 3px 15px 0;
   border-radius: 30px;
   margin-bottom: 20px;
   width: fit-content;
+  height: 50px;
   font: bold 33px 'Cafe24-Shiningstar', sans-serif;
-  line-height: 1.8;
   letter-spacing: 2px;
 }
 
@@ -1015,8 +1013,9 @@ main .btn{
   color: #fff;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  line-height: 1.8;
+  line-height: 1.6;
   font-family: 'Pretendard-Light', sans-serif;
+  font-size: 15px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -1057,7 +1056,8 @@ main .btn{
   justify-content: center;
   
   border: none;
-  background-color: #0a0a0a;
+  background-color: #000;
+  border: 1px solid #85BF72;
   cursor: pointer;
   overflow: hidden;
   z-index: 30;
@@ -1081,6 +1081,8 @@ footer{
   color: #fff;
   width: 100%;
   padding: 30px 50px;
+  font-family: 'Pretendard-Light', sans-serif;
+  font-size: 15px;
 }
 
 .fnb{
@@ -1121,7 +1123,6 @@ footer{
 .f_up .f_btn ul li{
   display: none;
 }
-
 
 .f_down{
   display: flex;
