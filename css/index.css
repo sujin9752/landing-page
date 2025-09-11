@@ -1,18 +1,20 @@
 @import url(reset.css);
 @import url(font.css);
 
-html{scroll-behavior: smooth;}
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
 body{
   background-image: url(../image/bg.jpg);
-  background-color: rgba(50, 50, 50, 0.9);
+  background-color: rgba(50, 50, 50, 1);
   background-blend-mode: multiply;
 }
 
 
 #wrap{
-  width: 1300px;
-  margin: 0 auto;
+  width: 1920px;
   display: flex;
   flex-direction: column;
 }
@@ -20,16 +22,24 @@ body{
 
 /* header _______________________ */
 
+
 header{
+  width: 1920px;
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.h_wrap{
+  width: 1300px;
   /* border: 1px solid #fff; */
   display: flex;
-  margin: 0;
+  margin: 0 auto;
   padding: 15px 50px;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  background-color: #111;
   z-index: 1000; 
 }
 
@@ -80,8 +90,8 @@ header{
   content: '';
   position: absolute;
   top: 50%;
-  left: 0%;
-  width: 100%;
+  left: 25%;
+  width: 50%;
   height: 2px;
   transform: translateX(-50%)
     translateY(-50%)
@@ -168,7 +178,7 @@ main{
   height: 90vh;
   overflow: hidden;
   padding: 70px 0 100px;
-  /* margin-top: 10px; */
+  margin-top: 90px;
   color: #fff;
 }
 
@@ -176,7 +186,7 @@ main{
   position: absolute;
   inset: 0;
   background: url(../image/main_visual.png) no-repeat top right;
-  background-size: auto 700px;
+  background-size: 100% 700px;
   animation: kenburns-top-right 4s ease-out both;
   pointer-events: none;
   z-index: 0;
@@ -191,10 +201,12 @@ main{
   pointer-events: none;
 }
 
+
 .main_text{
+  /* border: 1px solid yellow; */
   position: absolute;
   top: 100px;
-  left: 50px;
+  left: 370px;
   font-family: 'Gmarket-SansLight', sans-serif;
   font-size: 45px;
   line-height: 1.4;
@@ -212,7 +224,7 @@ main{
 main .btn{
   position: absolute;
   top: 400px;
-  left: 150px;
+  left: 475px;
   transform: translateX(-50%);
 
   width: 60px;
@@ -280,7 +292,7 @@ main .btn{
 .main_caption{
   position: absolute;
   bottom: 80px;
-  right: 80px;
+  right: 370px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -507,14 +519,14 @@ main .btn{
   transform: rotateY(180deg); 
   opacity: 0;
   color: #fff;
-  background: linear-gradient(rgb(60, 88, 53) 0%, rgb(44, 65, 39) 7%, rgb(0, 0, 0) 80%);
+  background: linear-gradient(rgb(52, 78, 57) 0%, rgb(87, 168, 69) 80%);
 }
 
 .front-content { /* 여분설정 */
   position: absolute;
   inset: 4px;
   border-radius: 16px;
-  background: red;
+  /* background: red; */
   z-index: 1;
 }
 
@@ -978,6 +990,8 @@ main .btn{
 .reviews{
   display: flex;
   gap: 10px;
+  width: 1300px;
+  margin: 0 auto;
 }
 .reviews .user{
   background-color: #777;
@@ -1011,12 +1025,13 @@ main .btn{
 
 /* //// 유의사항 //// */
 .notice{
+  width: 1300px;
   margin: 100px auto;
   padding: 15px 30px 25px;
   color: #fff;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  line-height: 1.6;
+  line-height: 1.8;
   font-family: 'Pretendard-Light', sans-serif;
   font-size: 15px;
   background-color: rgba(0, 0, 0, 0.7);
@@ -1031,6 +1046,12 @@ main .btn{
   font-family: 'Gmarket-SansBold', sans-serif;
   margin: 20px 0;
   opacity: 1;
+}
+
+.notice_text em{
+  color: yellowgreen;
+  font-style: normal;
+  font-weight: bold;
 }
 
 .notice_title:hover{opacity: 0.75;}
@@ -1081,24 +1102,29 @@ main .btn{
 
 footer{
   background-color: #111;
+  width: 1920px;
+}
+
+.f_wrap{
+  width: 1300px;
+  margin: 0 auto;
   color: #fff;
-  width: 100%;
-  padding: 30px 50px;
+  padding: 30px 0;
   font-family: 'Pretendard-Light', sans-serif;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .fnb{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 60px;
+  gap: 20px;
 }
 
 .fnb>li a{
   display: block;
   text-align: center;
-  padding: 0 30px;
+  padding: 0 30px 0 0;
 }
 
 /* 첫 번째 이후 아이템 왼쪽에만 세로 구분선 */
@@ -1133,7 +1159,7 @@ footer{
   margin-top: 20px;
 }
 .f_down img{
-  width: 100px;
+  width: 80px;
   margin-right: 20px;
 }
 
@@ -1157,10 +1183,10 @@ footer{
   width: 50px;
   height: 50px;
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 150px;
+  bottom: 140px;
   font-size: 30px;
-  background-color: #555;
+  background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #85BF72;
   border-radius: 50%;
   margin: auto;
