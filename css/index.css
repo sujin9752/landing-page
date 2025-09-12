@@ -14,7 +14,7 @@ body{
 
 
 #wrap{
-  width: 1920px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +24,7 @@ body{
 
 
 header{
-  width: 1920px;
+  width: 100%;
   background-color: #111;
   position: fixed;
   top: 0;
@@ -175,7 +175,7 @@ header{
 
 main{
   position: relative;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   padding: 70px 0 100px;
   margin-top: 90px;
@@ -185,22 +185,26 @@ main{
 .main_visual{
   position: absolute;
   inset: 0;
-  background: url(../image/main_visual.png) no-repeat top right;
-  background-size: 100% 700px;
-  animation: kenburns-top-right 4s ease-out both;
+  width: 100%;
+  height: 100vh;
+  background: url(../image/main_v2bg.png) no-repeat center/cover fixed;
+  background-size: cover;
   pointer-events: none;
   z-index: 0;
 }
 .main_visual::before{
   content: '';
   inset: 0;
+  top: 0;
+  right: 420px;
   position: absolute;
-  background: radial-gradient(circle,rgba(53, 64, 52, 0.12) 0%, rgba(0, 0, 0, 1) 100%);
-  mix-blend-mode: multiply;
-  opacity: 0.6;
+  background: url(../image/main_v2.png) no-repeat right top;
+  opacity: 0.8;
+  background-size: 60%;
+  animation: kenburns-top-right 4s ease-out both;
   pointer-events: none;
+  z-index: 10;
 }
-
 
 .main_text{
   /* border: 1px solid yellow; */
@@ -218,6 +222,35 @@ main{
 .main_text h2 span{font-family: 'Gmarket-SansBold', sans-serif;}
 .main_text h2:first-child{margin-bottom: 15px;}
 .main_text h2:nth-child(2) span{color: #85BF72;}
+
+.main_caption{
+  position: absolute;
+  bottom: 150px;
+  right: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  row-gap: 30px;
+  z-index: 20;
+}
+
+.main_caption p{
+  /* border: 2px solid yellow; */
+  width: max-content;
+  white-space: nowrap;
+  text-align: right;
+  font-family: 'Cafe24-Danjunghae', sans-serif;
+  font-size: 32px;
+  line-height: 1.4;
+  color: #fff; 
+  animation: focus-in-contract 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.main_caption p span{color: #85BF72;}
+.main_caption > p:first-child > span:first-of-type,
+.main_caption > p:last-child  > span:last-of-type {color: #d5e289;}
+.main_caption p:first-of-type{animation-delay: 0.4s;}
+.main_caption p:last-of-type{animation-delay: 0.6s;}
 
 
 /* //// 구매 버튼 //// */
@@ -288,34 +321,6 @@ main .btn{
   100% {filter: blur(0px);
         opacity: 1;}
   }
-
-.main_caption{
-  position: absolute;
-  bottom: 80px;
-  right: 370px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  row-gap: 30px;
-  z-index: 20;
-}
-
-.main_caption p{
-  /* border: 2px solid yellow; */
-  width: max-content;
-  white-space: nowrap;
-  text-align: right;
-  font-family: 'Cafe24-Danjunghae', sans-serif;
-  font-size: 32px;
-  line-height: 1.4;
-  color: #fff; 
-  animation: focus-in-contract 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.main_caption p span{color: #85BF72;}
-.main_caption p:first-of-type{animation-delay: 0.4s;}
-.main_caption p:last-of-type{animation-delay: 0.6s;}
-
 
 /* 마우스 스크롤 효과 */
 @keyframes fadein {to {opacity: 1;}}
@@ -519,7 +524,7 @@ main .btn{
   transform: rotateY(180deg); 
   opacity: 0;
   color: #fff;
-  background: linear-gradient(rgb(52, 78, 57) 0%, rgb(87, 168, 69) 80%);
+  background: linear-gradient(rgb(52, 78, 57) 10%, #85BF72 50%, #b3bf72 80%);
 }
 
 .front-content { /* 여분설정 */
@@ -651,8 +656,8 @@ main .btn{
   border-radius: 10px;
   width: 230px;
   height: 230px;
-  background: linear-gradient(360deg, #333, #00740a);
-  box-shadow: inset 0px 0px 180px 5px #fff;
+  background-color: #a4e090;
+  box-shadow: inset 0px 0px 80px 3px #d5e289;
   z-index: 0;
 }
 
@@ -830,7 +835,7 @@ main .btn{
   font-size: 35px;
   text-shadow: 0 0 2px #333;
   background-color: #fff;
-  border: 3px solid #85BF72;
+  border: 3px solid #b3bf72;
   border-radius: 20px;
   z-index: 2;
   transition: .4s ease-in-out;
@@ -878,7 +883,7 @@ main .btn{
 }
 
 .photocard_main:hover {
-  background-color: #85BF72;
+  background-color: #b3bf72;
   color: #fff;
   cursor: pointer;
 }
@@ -1102,7 +1107,7 @@ main .btn{
 
 footer{
   background-color: #111;
-  width: 1920px;
+  width: 100%;
 }
 
 .f_wrap{
