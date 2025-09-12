@@ -37,7 +37,7 @@ header{
   /* border: 1px solid #fff; */
   display: flex;
   margin: 0 auto;
-  padding: 15px 50px;
+  padding: 15px 0;
   justify-content: space-between;
   align-items: center;
   z-index: 1000; 
@@ -196,11 +196,11 @@ main{
   content: '';
   inset: 0;
   top: 0;
-  right: 420px;
+  right: 400px;
   position: absolute;
   background: url(../image/main_v2.png) no-repeat right top;
   opacity: 0.8;
-  background-size: 60%;
+  background-size: 50%;
   animation: kenburns-top-right 4s ease-out both;
   pointer-events: none;
   z-index: 10;
